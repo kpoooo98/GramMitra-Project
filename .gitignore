@@ -1,0 +1,16 @@
+# Backend
+grammitra-backend/target/
+
+# Frontend
+grammitra-frontend/node_modules/
+grammitra-frontend/dist/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Env
+.env
