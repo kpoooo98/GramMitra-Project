@@ -1,65 +1,160 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useRouter } from "next/navigation";
+
+export default function HomePage() {
+  const router = useRouter();
+
+  const topServices = [
+    { name: "Electrician", img: "/images/Electrician.jpg" },
+    { name: "Plumber", img: "/images/Plumber.jpg" },
+    { name: "Carpenter", img: "/images/carpenter.jpg" },
+    { name: "Housekeeping", img: "/images/Homekeeping.jpg" },
+    { name: "Salon", img: "/images/Parlour.jpg" },
+    { name: "Babysitter", img: "/images/babysitter.jpg" },
+    { name: "Tuition", img: "/images/Tution.jpg" },
+    { name: "Grocery", img: "/images/Homekeeping.jpg" },
+    { name: "AC Repair", img: "/images/Electrician.jpg" },
+    { name: "Painter", img: "/images/carpenter.jpg" },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="relative min-h-screen">
+
+      {/* 🌄 Background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/village.jpg')" }}
+      />
+
+      {/* 🌑 Overlay */}
+      <div className="absolute inset-0 bg-black/60" />
+
+      {/* CONTENT */}
+      <div className="relative z-10">
+
+        {/* 🔝 NAVBAR */}
+        <div className="flex justify-between items-center px-6 py-4 text-white">
+          <h1 className="text-2xl font-bold text-green-400">
+            GramMitra
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+
+          <div className="flex gap-3">
+            <button
+              onClick={() => router.push("/login")}
+              className="border px-4 py-1 rounded"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              Login
+            </button>
+
+<button
+  onClick={() => router.push("/signup")}
+  className="bg-green-500 text-white px-4 py-1 rounded"
+>
+  Sign Up
+</button>
+          </div>
+        </div>
+
+        {/* 🏷️ TITLE */}
+        <div className="text-center mt-8">
+          <h1 className="text-6xl font-bold text-green-400">
+            GramMitra
+          </h1>
+          <p className="text-gray-200">
+            Connecting Rural Skills to Local Demand
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+        {/* 🔍 SEARCH BAR */}
+        <div className="flex justify-center mt-6 px-4">
+          <div className="flex items-center bg-white rounded-full px-5 py-3 w-full max-w-xl shadow">
+            <span className="text-gray-500 mr-2">🔍</span>
+            <input
+              placeholder="Search services like plumber, electrician..."
+              className="w-full outline-none"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
+
+        {/* 🔥 5 x 2 GRID (YOUR MAIN REQUIREMENT) */}
+        <div className="flex justify-center mt-10 px-4">
+          <div className="grid grid-cols-5 gap-6">
+
+            {topServices.map((item, i) => (
+              <div
+                key={i}
+                onClick={() => router.push("/login")}
+                className="text-center cursor-pointer"
+              >
+
+                {/* BOX */}
+                <div className="w-20 h-20 bg-white rounded-2xl shadow flex items-center justify-center mx-auto hover:shadow-md transition">
+                  <img
+                    src={item.img}
+                    className="w-12 h-12 object-contain"
+                  />
+                </div>
+
+                {/* TEXT */}
+                <p className="text-white text-xs mt-2">
+                  {item.name}
+                </p>
+
+              </div>
+            ))}
+
+          </div>
+        </div>
+
+        {/* ⬇️ WHITE SECTION (LIKE JUSTDIAL) */}
+        <div className="bg-white mt-16 px-10 py-10 rounded-t-3xl">
+
+          {/* SECTION HEADER */}
+          <div className="flex justify-between items-center mb-6">
+            <div>
+              <h2 className="text-2xl font-bold">
+                Home Appliances
+              </h2>
+              <p className="text-gray-500 text-sm">
+                Repair & maintenance services
+              </p>
+            </div>
+
+            <button className="text-blue-500 text-sm">
+              Explore More
+            </button>
+          </div>
+
+          {/* RIGHT SIDE BOXES (LIKE BILL SECTION) */}
+          <div className="flex gap-6">
+
+            {[
+              "AC",
+              "Fridge",
+              "Washing Machine",
+              "Microwave",
+              "Geyser",
+              "Water Purifier",
+            ].map((item, i) => (
+              <div key={i} className="text-center">
+
+                <div className="w-24 h-24 bg-gray-100 rounded-2xl flex items-center justify-center shadow">
+                  <span className="text-xl">🔧</span>
+                </div>
+
+                <p className="mt-2 text-sm">
+                  {item}
+                </p>
+
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+
+      </div>
     </div>
   );
 }
