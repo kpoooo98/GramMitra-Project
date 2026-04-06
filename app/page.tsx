@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Navbar from "./components/Navbar";
 
 export default function HomePage() {
   const router = useRouter();
@@ -33,28 +34,8 @@ export default function HomePage() {
       {/* CONTENT */}
       <div className="relative z-10">
 
-        {/* 🔝 NAVBAR */}
-        <div className="flex justify-between items-center px-6 py-4 text-white">
-          <h1 className="text-2xl font-bold text-green-400">
-            GramMitra
-          </h1>
-
-          <div className="flex gap-3">
-            <button
-              onClick={() => router.push("/login")}
-              className="border px-4 py-1 rounded"
-            >
-              Login
-            </button>
-
-<button
-  onClick={() => router.push("/signup")}
-  className="bg-green-500 text-white px-4 py-1 rounded"
->
-  Sign Up
-</button>
-          </div>
-        </div>
+        {/* ✅ NAVBAR */}
+        <Navbar />
 
         {/* 🏷️ TITLE */}
         <div className="text-center mt-8">
@@ -77,7 +58,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* 🔥 5 x 2 GRID (YOUR MAIN REQUIREMENT) */}
+        {/* 🔥 TOP SERVICES GRID */}
         <div className="flex justify-center mt-10 px-4">
           <div className="grid grid-cols-5 gap-6">
 
@@ -87,8 +68,6 @@ export default function HomePage() {
                 onClick={() => router.push("/login")}
                 className="text-center cursor-pointer"
               >
-
-                {/* BOX */}
                 <div className="w-20 h-20 bg-white rounded-2xl shadow flex items-center justify-center mx-auto hover:shadow-md transition">
                   <img
                     src={item.img}
@@ -96,57 +75,48 @@ export default function HomePage() {
                   />
                 </div>
 
-                {/* TEXT */}
                 <p className="text-white text-xs mt-2">
                   {item.name}
                 </p>
-
               </div>
             ))}
 
           </div>
         </div>
 
-        {/* ⬇️ WHITE SECTION (LIKE JUSTDIAL) */}
-        <div className="bg-white mt-16 px-10 py-10 rounded-t-3xl">
+        {/* ⬇️ HOME APPLIANCES (JUSTDIAL STYLE) */}
+        <div className="bg-white mt-40 px-10 py-10 rounded-t-3xl">
 
-          {/* SECTION HEADER */}
-          <div className="flex justify-between items-center mb-6">
-            <div>
-              <h2 className="text-2xl font-bold">
-                Home Appliances
-              </h2>
-              <p className="text-gray-500 text-sm">
-                Repair & maintenance services
-              </p>
-            </div>
-
-            <button className="text-blue-500 text-sm">
-              Explore More
-            </button>
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-black">
+              Home Appliances
+            </h2>
+            <p className="text-gray-500 text-sm">
+              Repair & maintenance services
+            </p>
           </div>
 
-          {/* RIGHT SIDE BOXES (LIKE BILL SECTION) */}
-          <div className="flex gap-6">
+          <div className="flex gap-6 overflow-x-auto">
 
             {[
-              "AC",
-              "Fridge",
-              "Washing Machine",
-              "Microwave",
-              "Geyser",
-              "Water Purifier",
+              { name: "AC", icon: "❄️" },
+              { name: "Fridge", icon: "🧊" },
+              { name: "Washing Machine", icon: "🧺" },
+              { name: "Microwave", icon: "🔥" },
+              { name: "Geyser", icon: "🚿" },
+              { name: "Water Purifier", icon: "💧" },
             ].map((item, i) => (
-              <div key={i} className="text-center">
-
-                <div className="w-24 h-24 bg-gray-100 rounded-2xl flex items-center justify-center shadow">
-                  <span className="text-xl">🔧</span>
+              <div
+                key={i}
+                className="text-center min-w-[100px] cursor-pointer"
+              >
+                <div className="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center shadow hover:shadow-md transition">
+                  <span className="text-2xl">{item.icon}</span>
                 </div>
 
-                <p className="mt-2 text-sm">
-                  {item}
+                <p className="mt-2 text-sm text-gray-700">
+                  {item.name}
                 </p>
-
               </div>
             ))}
 
